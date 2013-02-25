@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "airport_events/version"
 
 Gem::Specification.new do |s|
-  s.name        = 'airport-events'
+  s.name        = 'airport_events'
   s.version     = AirportEvents::VERSION
   s.date        = '2013-02-24'
   s.summary     = "A MacOS specific library to receive WiFi related events"
@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.email       = 'jonathan@spacetofu.com'
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.homepage    = 'https://github.com/jpettersson/airport-events'
+  s.homepage    = 'https://github.com/jpettersson/airport_events'
   s.executables << 'airport-log'
 
   s.add_development_dependency "rspec", "2.13.0"
