@@ -35,7 +35,7 @@ sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Curre
 Usage
 -----
 
-```
+```ruby
 require 'airport_events'
 
 # Create a new Watcher instance and set up some event listeners.
@@ -73,7 +73,7 @@ For usage instructions run:
 
 Example JSON output:
 
-```
+```json
 [
   {
     "ssid": "orca",
