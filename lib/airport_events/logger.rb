@@ -1,19 +1,43 @@
 require 'json'
+require 'logger'
 
-module WifiEvent
+OUT = Logger.new(STDOUT)
+
+module AirportEvents
   class Logger
 
     def initialize path
       @log_path = path
       read_log
 
-      @watcher = WifiEvent::Watcher.new(self)
+      watcher = AirportEvents::Watcher.new
+      
+      watcher.bind :connected do |ssid, date|
+        connected ssid, date
+      end
+
+      watcher.bind :disconnected do |date|
+        disconnected date
+      end
+
+      watcher.start
+
+      interrupted = false
+      trap("INT") { interrupted = true }
+
+      while true do
+        exit if interrupted
+        sleep 0.1
+      end
+
     end
 
     def connected ssid, date
       if last_entry
         unless last_entry[:ssid] == ssid
           new_entry ssid, date
+        else
+          OUT.info "AirportLogger: Already connected to to \"#{ssid}\""
         end
       else
         new_entry ssid, date
@@ -29,7 +53,7 @@ module WifiEvent
     end
 
     def read_file 
-      if file = IO.read(@log_path)
+      if file = File.read(@log_path, mode: 'a+')
         if file.length > 0
           JSON.parse(file, :symbolize_names => true)
         else
@@ -56,7 +80,7 @@ module WifiEvent
     end
 
     def new_entry ssid, date
-      puts "WifiEvent: Connected to #{ssid} at #{date}."
+      OUT.info "AirportLogger: Connected to \"#{ssid}\""
       append({
         :ssid => ssid,
         :connected_at => date,
@@ -66,7 +90,7 @@ module WifiEvent
 
     def end_last_entry date
       if last_entry and last_entry[:disconnected_at].nil?
-        puts "WifiEvent: Disconnected at #{date}."
+        OUT.info "AirportLogger: Disconnected"
         last_entry[:disconnected_at] = date
         rewrite
       end
