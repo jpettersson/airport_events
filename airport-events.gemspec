@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.name        = 'airport_events'
   s.version     = AirportEvents::VERSION
   s.date        = '2013-02-24'
-  s.summary     = "Detect changes in WiFi network associations on MacOS"
-  s.description = "Detect and log changes in WiFi network associations on MacOS. Utilizing the build in, but hidden 'airport' command."
+  s.summary     = "A MacOS specific library to receive WiFi related events"
+  s.description = "Detect and log changes in WiFi network associations on MacOS. Utilizing the official, but hidden 'airport' command."
   s.authors     = ["Jonathan Pettersson"]
   s.email       = 'jonathan@spacetofu.com'
   s.files         = `git ls-files`.split("\n")
