@@ -10,11 +10,11 @@ connected       String ssid, DateTime date    A WiFi networks has been successfu
 disconnected    DateTime date                 Computer is going to sleep, airport has been disabled or system halts. 
 ```
 
-The library is extremely fresh and currently has no specs or documentation and has only been tested on MacOS 10.7.5.
+The library is extremely fresh and currently has no tests and has only been tested on MacOS 10.7.5.
 
 I created it to log the amount of time I spend on different WiFi networks. Check out the airport-log utility below for an example implementation.
 
-Example uses:
+Why?
 -------------
 
 * Detect when a machine has joined a specific network. 
@@ -29,6 +29,23 @@ The gem depends on an official Apple command line tool called "airport" which is
 ``
 sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/sbin/airport
 ``
+
+Usage
+-----
+
+```
+require 'airport-events'
+
+@watcher = AirportEvents::Watcher.new
+@watcher.bind :connected do |ssid, date|
+  puts "Connected to #{ssid} on #{date}"
+end
+
+@watcher.bind :disconnected do |date|
+  puts "Disconnected on #{date}"
+end
+
+```
 
 Binary: airport-log
 -----------
