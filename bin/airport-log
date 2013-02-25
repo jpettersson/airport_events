@@ -3,19 +3,21 @@ require_relative '../lib/airport_events'
 require "thor"
 
 class AirportLogThor < Thor
-  desc 'enable_airport', 'Enable the airport command in MacOS.'
+  desc 'enable_airport', 'Print instructions on how to enable the airport command in MacOS.'
   def enable_airport
-    puts 'Create symlink'
+    puts <<-EOF
+
+The "airport" command is not enabled by default in MacOS. To enable it, run the following command:
+sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/sbin/airport
+    
+    EOF
   end
 
-  desc 'to_file', "Log WiFi connection events to a JSON file. Default is: ~/.airport-log.json"
-  def to_file(path="#{Dir.home}/.airport-log.json")
-    AirportEvents::Logger.new path
-  end
-
-  desc 'watch', "Watch WiFi connection events live."
-  def watch
-    AirportEvents::Echo.new
+  desc 'to_file --path PATH', "(Default) Log WiFi events to a JSON file. Default PATH is: ~/.airport-log.json"
+  method_option :path, :default => "#{Dir.home}/.airport-log.json", :aliases => '-p'
+  def to_file
+    puts "AirportLog: Logging WiFi events to '#{options[:path]}'"
+    AirportEvents::Logger.new options[:path]
   end
 
   default_task :to_file

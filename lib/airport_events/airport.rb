@@ -5,7 +5,7 @@ module AirportEvents
     def self.ensure_airport_command
       run_info_command
       unless $?.exitstatus == 0
-        raise "Fatal: the 'airport' command is not in PATH. Run 'airport-log help' for instructions."
+        raise "Fatal: the 'airport' command is not in PATH. Run 'airport-log enable_airport' for instructions."
       end
     end
 
