@@ -36,15 +36,29 @@ Usage
 -----
 
 ```
-require 'airport-events'
+require 'airport_events'
 
-@watcher = AirportEvents::Watcher.new
-@watcher.bind :connected do |ssid, date|
+# Create a new Watcher instance and set up some event listeners.
+watcher = AirportEvents::Watcher.new
+
+watcher.bind :connected do |ssid, date|
   puts "Connected to #{ssid} on #{date}"
 end
 
-@watcher.bind :disconnected do |date|
+watcher.bind :disconnected do |date|
   puts "Disconnected on #{date}"
+end
+
+# Start the watcher, which runs in a separate Thread.
+watcher.start
+
+# Keep program alive until interrupted (For instance: CTRL + C).
+interrupted = false
+trap("INT") { interrupted = true }
+
+while true do
+  exit if interrupted
+  sleep 0.1
 end
 
 ```
