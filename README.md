@@ -52,7 +52,7 @@ end
 Binary: airport-log
 -----------
 
-The gem is shipped with a binary called 'airport-log' which logs wifi connect/disconnect events to a json file.
+The gem is shipped with a binary called 'airport-log' which logs wifi connect/disconnect events to a JSON file.
 
 For usage instructions run:
 ``airport-log -h``
