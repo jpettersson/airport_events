@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+require_relative '../lib/airport_events'
+require "thor"
+
+class AirportLogThor < Thor
+  desc 'enable_airport', 'Enable the airport command in MacOS.'
+  def enable_airport
+    puts 'Create symlink'
+  end
+
+  desc 'to_file', "Log WiFi connection events to a JSON file. Default is: ~/.airport-log.json"
+  def to_file(path="#{Dir.home}/.airport-log.json")
+    AirportEvents::Logger.new path
+  end
+
+  desc 'watch', "Watch WiFi connection events live."
+  def watch
+    AirportEvents::Echo.new
+  end
+
+  default_task :to_file
+end
+
+AirportLogThor.start
