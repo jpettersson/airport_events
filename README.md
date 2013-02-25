@@ -22,7 +22,9 @@ Why?
 
 Installation
 ------------
+``
 gem install airport-events
+``
 
 The gem depends on an official Apple command line tool called "airport" which is disabled by default. To enable the "airport" command, symlink it into PATH by running the following command: 
 
