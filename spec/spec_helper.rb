@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'bundler/setup'
 
-require 'wifilog' # and any other gems you need
+require_relative '../lib/airport_events' 
 
 RSpec.configure do |config|
   # some (optional) config here
