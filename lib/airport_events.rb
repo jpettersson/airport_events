@@ -8,6 +8,8 @@ module AirportEvents
     include EventDispatcher
 
     def start
+      Airport.ensure_airport_command
+
       if Airport.connected?
         connected DateTime.now
       else
