@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "airport_events/version"
 
 Gem::Specification.new do |s|
-  s.name        = 'airport_events'
+  s.name        = 'airport-events'
   s.version     = AirportEvents::VERSION
   s.date        = '2013-02-24'
   s.summary     = "A MacOS specific library to receive WiFi related events"
