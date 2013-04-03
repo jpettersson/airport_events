@@ -100,4 +100,4 @@ Example JSON output:
 ]
 ```
 
-When disconnected_at is null it means the network is still connected or a disconnect event was never sent.
+Note: When disconnected_at is null it means the network is still connected or a disconnect event was never sent.
