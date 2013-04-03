@@ -1,7 +1,7 @@
 AirportEvents
 =============
 
-airport-events is a MacOS specific library that receives WiFi related events.
+A MacOS specific Ruby library that receives WiFi related events from the system.
 
 <table>
   <caption>Currently supported events</caption>
@@ -22,9 +22,9 @@ airport-events is a MacOS specific library that receives WiFi related events.
   </tr>
 </table>
 
-The library is extremely fresh and currently has no tests and has only been tested on MacOS 10.7.5.
+The library has only been tested on MacOS 10.7.5.
 
-I created it to log the amount of time I spend on different WiFi networks. Check out the airport-log utility below for an example implementation.
+It was created to log the amount of time I spend on different WiFi networks. Check out the airport-log utility below for an example implementation.
 
 Why?
 -------------
@@ -44,7 +44,7 @@ The gem depends on an official Apple command line tool called "airport" which is
 sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/sbin/airport
 ``
 
-Usage
+Example Usage
 -----
 
 ```ruby
@@ -75,10 +75,10 @@ end
 
 ```
 
-Binary: airport-log
+airport-log
 -----------
 
-The gem is shipped with a binary called 'airport-log' which logs wifi connect/disconnect events to a JSON file.
+The gem is shipped with a command called 'airport-log' which logs wifi connect/disconnect events to a JSON file.
 
 For usage instructions run:
 ``airport-log -h``
