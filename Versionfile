@@ -1,0 +1,22 @@
+#!/usr/bin/ruby
+
+automate_git
+
+read_version do
+  contents = File.read File.join(Dir.pwd, "lib/airport_events/version.rb")
+  instance_eval(contents)
+  AirportEvents::VERSION
+end
+
+write_version do |currentVersion, nextVersion|
+  contents = File.read File.join(Dir.pwd, "lib/airport_events/version.rb")
+  contents = contents.sub(currentVersion.to_s, nextVersion.to_s)
+
+  File.open(File.join(Dir.pwd, "lib/airport_events/version.rb"), 'w') do |file| 
+    file.write contents
+  end
+end
+
+# after :version do |currentVersion|
+#   system("gem build airport_events.gemspec")
+# end
