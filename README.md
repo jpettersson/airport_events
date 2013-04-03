@@ -1,7 +1,7 @@
 airport_events
 ==============
 
-airport-events is a MacOS specific library that receives WiFi related events. It currently supports:
+airport-events is a MacOS specific library that receives WiFi related events.
 
 ```
 event           parameters                    triggers when
@@ -9,6 +9,25 @@ event           parameters                    triggers when
 connected       String ssid, DateTime date    A WiFi networks has been successfully connected.
 disconnected    DateTime date                 Computer is going to sleep, airport has been disabled or system halts. 
 ```
+
+<table>
+  <caption>Currently supported events</caption>
+  <tr>
+    <td>Event</td>
+    <td>Parameters</td>
+    <td>Triggers when</td>
+  </tr>
+  <tr>
+    <td>connected</td>
+    <td>String ssid, DateTime date</td>
+    <td>A WiFi network has been successfully connected</td>
+  </tr>
+  <tr>
+    <td>disconnected</td>
+    <td>DateTime date</td>
+    <td>Computer is going to sleep, airport has been disabled or system halts</td>
+  </tr>
+</table>
 
 The library is extremely fresh and currently has no tests and has only been tested on MacOS 10.7.5.
 
