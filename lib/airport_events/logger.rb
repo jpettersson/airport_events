@@ -12,11 +12,11 @@ module AirportEvents
 
       watcher = AirportEvents::Watcher.new
       
-      watcher.bind :connected do |ssid, date|
+      watcher.on :connected do |ssid, date|
         connected ssid, date
       end
 
-      watcher.bind :disconnected do |date|
+      watcher.on :disconnected do |date|
         disconnected date
       end
 

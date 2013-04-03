@@ -2,7 +2,7 @@ module AirportEvents
   class Airport
     INFO_COMMAND = "airport -I 2>&1"
 
-    def self.ensure_airport_command
+    def self.ensure_airport_command!
       run_info_command
       unless $?.exitstatus == 0
         raise "Fatal: the 'airport' command is not in PATH. Run 'airport-log enable_airport' for instructions."

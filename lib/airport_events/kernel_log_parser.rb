@@ -3,7 +3,7 @@ require 'date'
 
 module AirportEvents
   class KernelLogParser
-    include EventDispatcher
+    include Publisher
 
     def initialize
       Thread.new do
@@ -14,7 +14,7 @@ module AirportEvents
           log.tail do |line| 
 
             if event = match_event(line)
-              trigger event, DateTime.strptime(line[0..15], '%b %d %H:%M:%S')
+              publish event, DateTime.strptime(line[0..15], '%b %d %H:%M:%S')
             end
           end
         end
