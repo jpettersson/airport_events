@@ -1,5 +1,5 @@
-airport_events
-==============
+AirportEvents
+=============
 
 airport-events is a MacOS specific library that receives WiFi related events.
 
